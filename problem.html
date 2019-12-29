@@ -1,0 +1,297 @@
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewpart" content="width=device-width,initial-scale=1">
+    <!-- Add Bootstrap css file -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<!-- Add jQuery library -->
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<!-- Add Bootstrap library -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body onload="onpageload()">
+    <header>
+<!-- Heading -->
+        <div class="navbar-inverse container-fluid">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand"><b>Quiz Center</b></a>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="nav navbar-nav">
+                    <li ><a href="index.html">Home</a></li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quiz<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="openprob(0)" href="#">JavaScript Quiz</a></li>
+                            <li><a onclick="openprob(1)" href="#">CSS Quiz</a></li>
+                            <li><a onclick="openprob(2)" href="#">HTML Quiz</a></li>
+                            <li><a onclick="openprob(3)" href="#">C Programming Quiz</a></li>
+                            <li><a onclick="openprob(4)" href="#">DBMS Quiz</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" id="usersignup" data-toggle="modal" data-target="#sign">Sign Up</a></li>
+                    <li><a href="#" id="userlogin" data-toggle="modal" data-target="#login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>    
+<!-- /Heading -->
+<!--  Modal -->
+<!-- SignUP-->
+<div class="modal fade" id="sign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2><strong>Sign Up</strong></h2>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal">
+							<div class="form-group row">
+								<label class="col-md-3 col-form-control" form="name">Name : </label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="name" placeholder="Enter Full Name : ">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 col-form-control" form="num">Phone No. : </label>
+								<div class="col-md-9">
+									<input type="number" class="form-control" id="num" placeholder="Enter Phone No. : ">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 col-form-control" form="email">Email : </label>
+								<div class="col-md-9">
+									<input type="email" class="form-control" id="email" placeholder="Enter Email ID : ">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 col-form-control" form="uname">User Name : </label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="uname" placeholder="Enter User Name : ">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 col-form-control" form="pass">Password : </label>
+								<div class="col-md-9">
+									<input type="password" class="form-control" id="pass" placeholder="Enter Password : ">
+								</div>
+							</div>
+							<div class="row">
+								<div class="btn-group col-md-offset-3 col-md-6">
+									<button type="button" onclick="signup()" class="btn btn-primary">Sign Up</button>
+									<button type="reset" class="btn btn-default">Reset</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+</div>
+<!--Login-->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2><strong>Sign Up</strong></h2>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group row">
+							<label class="col-md-3 col-form-control" form="luname">User ID : </label>
+							<div class="col-md-9">
+								<input type="text" class="form-control" id="luname" placeholder="Enter User ID : ">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-md-3 col-form-control" form="lpass">Password : </label>
+							<div class="col-md-9">
+								<input type="password" class="form-control" id="lpass" placeholder="Enter Password : ">
+							</div>
+						</div>
+						<div class="row">
+							<div class="btn-group col-md-offset-3 col-md-6">
+								<button type="button" onclick="login()" class="btn btn-primary">Login</button>
+								<button type="reset" class="btn btn-default">Reset</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+    </div>	
+
+<!--  /Modal -->
+<!-- Problem --><br><br>
+    <div class="container">
+    <form>
+       <div id="problem">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12">
+                    <b><p><span></span></p>
+                </div>
+                <div id="p0">
+                <div class="col-sm-6">A <input type="radio" name="r1">  <span></span></div>
+                <div class="col-sm-6">B <input type="radio" name="r1">  <span></span></div>
+                <div class="col-sm-6">C <input type="radio" name="r1">  <span></span></div>
+                <div class="col-sm-6">D <input type="radio" name="r1">  <span></span></div></b>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12">
+                    <b><p><span></span></p>
+                </div>
+                <div id="p1">
+                <div class="col-sm-6">A <input type="radio" name="r2">  <span></span></div>
+                <div class="col-sm-6">B <input type="radio" name="r2">  <span></span></div>
+                <div class="col-sm-6">C <input type="radio" name="r2">  <span></span></div>
+                <div class="col-sm-6">D <input type="radio" name="r2">  <span></span></div></b>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12">
+                    <b><p><span></span></p>
+                </div>
+                <div id="p2">
+                <div class="col-sm-6">A <input type="radio" name="r3">  <span></span></div>
+                <div class="col-sm-6">B <input type="radio" name="r3">  <span></span></div>
+                <div class="col-sm-6">C <input type="radio" name="r3">  <span></span></div>
+                <div class="col-sm-6">D <input type="radio" name="r3">  <span></span></div></b>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12">
+                    <b><p><span></span></p>
+                </div>
+                <div id="p3">
+                <div class="col-sm-6">A <input type="radio" name="r4">  <span></span></div>
+                <div class="col-sm-6">B <input type="radio" name="r4">  <span></span></div>
+                <div class="col-sm-6">C <input type="radio" name="r4">  <span></span></div>
+                <div class="col-sm-6">D <input type="radio" name="r4">  <span></span></div></b>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12">
+                    <b><p><span></span></p>
+                </div>
+                <div id="p4">
+                <div class="col-sm-6">A <input type="radio" name="r5">  <span></span></div>
+                <div class="col-sm-6">B <input type="radio" name="r5">  <span></span></div>
+                <div class="col-sm-6">C <input type="radio" name="r5">  <span></span></div>
+                <div class="col-sm-6">D <input type="radio" name="r5">  <span></span></div></b>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12">
+                    <b><p><span></span></p>
+                </div>
+                <div id="p5">
+                <div class="col-sm-6">A <input type="radio" name="r6">  <span></span></div>
+                <div class="col-sm-6">B <input type="radio" name="r6">  <span></span></div>
+                <div class="col-sm-6">C <input type="radio" name="r6">  <span></span></div>
+                <div class="col-sm-6">D <input type="radio" name="r6">  <span></span></div></b>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12">
+                    <b><p><span></span></p>
+                </div>
+                <div id="p6">
+                <div class="col-sm-6">A <input type="radio" name="r7">  <span></span></div>
+                <div class="col-sm-6">B <input type="radio" name="r7">  <span></span></div>
+                <div class="col-sm-6">C <input type="radio" name="r7">  <span></span></div>
+                <div class="col-sm-6">D <input type="radio" name="r7">  <span></span></div></b>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12">
+                    <b><p><span></span></p>
+                </div>
+                <div id="p7">
+                <div class="col-sm-6">A <input type="radio" name="r8">  <span></span></div>
+                <div class="col-sm-6">B <input type="radio" name="r8">  <span></span></div>
+                <div class="col-sm-6">C <input type="radio" name="r8">  <span></span></div>
+                <div class="col-sm-6">D <input type="radio" name="r8">  <span></span></div></b>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12">
+                    <b><p><span></span></p>
+                </div>
+                <div id="p8">
+                <div class="col-sm-6">A <input type="radio" name="r9">  <span></span></div>
+                <div class="col-sm-6">B <input type="radio" name="r9">  <span></span></div>
+                <div class="col-sm-6">C <input type="radio" name="r9">  <span></span></div>
+                <div class="col-sm-6">D <input type="radio" name="r9">  <span></span></div></b>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12">
+                    <b><p><span></span></p>
+                </div>
+                <div id="p9">
+                <div class="col-sm-6">A <input type="radio" name="r10">  <span></span></div>
+                <div class="col-sm-6">B <input type="radio" name="r10">  <span></span></div>
+                <div class="col-sm-6">C <input type="radio" name="r10">  <span></span></div>
+                <div class="col-sm-6">D <input type="radio" name="r10">  <span></span></div></b>
+                </div>
+            </div>
+        </div>
+        
+       </div>
+        <div class="row">
+            <div class="btn btn-group col-md-offset-4 col-md-4">
+                <button type="button" onclick="sub()" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+    </div>
+<!-- /Problem -->
+<!-- Footer --><br><br>
+    <div class="container bg-success"> 
+        <div class="row ">
+            <div class="col-sm-4" style="color:aliceblue;">
+                <div class="col-sm-3 footer-social-icons"><a href="#">Contact</a></div>
+                <div class="col-sm-3 footer-social-icons"><a href="#">Our Tean</a></div>
+                <div class="col-sm-3 footer-social-icons"><a href="#">About Us</a></div>
+                <div class="col-sm-3 footer-social-icons"><a href="#">Blog</a></div>
+            </div>
+            <div class="col-sm-3">
+                    <span>Follow Us:</span>
+                    <a href="https://facebook.com"><img src="images/fb.png"></img></a>
+                    <a href="https://google.com"><img src="images/gp.png"></img></a>
+                    <a href="https://youtube.com"><img src="images/yt.png"></img></a>
+                    <a href="https://twitter.com"><img src="images/t.png"></img></a>
+            </div>
+            <div class="col-sm-5">
+                <p>&copy; 2019 <a href="index.html">BasicQuiz</a>. All Rights Reserved.<br><span id="time"></span></p>
+            </div>
+        </div>
+    </div>
+<!-- /Footer -->
+<script src="problem.js"></script>
+</body>
+</html>

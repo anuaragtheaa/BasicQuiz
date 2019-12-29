@@ -1,0 +1,198 @@
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewpart" content="width=device-width,initial-scale=1">
+    <!-- Add Bootstrap css file -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<!-- Add jQuery library -->
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<!-- Add Bootstrap library -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body onload="onpageload()">
+    <header>
+<!-- Heading -->
+        <div class="navbar-inverse container-fluid">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand"><b>Quiz Center</b></a>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quiz<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="openprob(0)" href="#">JavaScript Quiz</a></li>
+                            <li><a onclick="openprob(1)" href="#">CSS Quiz</a></li>
+                            <li><a onclick="openprob(2)" href="#">HTML Quiz</a></li>
+                            <li><a onclick="openprob(3)" href="#">C Programming Quiz</a></li>
+                            <li><a onclick="openprob(4)" href="#">DBMS Quiz</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" id="usersignup" data-toggle="modal" data-target="#sign">Sign Up</a></li>
+                    <li><a href="#" id="userlogin" data-toggle="modal" data-target="#login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>    
+<!-- /Heading -->
+<!--  Modal -->
+<!-- SignUP-->
+<div class="modal fade" id="sign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2><strong>Sign Up</strong></h2>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal">
+							<div class="form-group row">
+								<label class="col-md-3 col-form-control" form="name">Name : </label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="name" placeholder="Enter Full Name : ">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 col-form-control" form="num">Phone No. : </label>
+								<div class="col-md-9">
+									<input type="number" class="form-control" id="num" placeholder="Enter Phone No. : ">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 col-form-control" form="email">Email : </label>
+								<div class="col-md-9">
+									<input type="email" class="form-control" id="email" placeholder="Enter Email ID : ">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 col-form-control" form="uname">User Name : </label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="uname" placeholder="Enter User Name : ">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-md-3 col-form-control" form="pass">Password : </label>
+								<div class="col-md-9">
+									<input type="password" class="form-control" id="pass" placeholder="Enter Password : ">
+								</div>
+							</div>
+							<div class="row">
+								<div class="btn-group col-md-offset-3 col-md-6">
+									<button type="button" onclick="signup()" class="btn btn-primary">Sign Up</button>
+									<button type="reset" class="btn btn-default">Reset</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+</div>
+<!--Login-->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2><strong>Sign Up</strong></h2>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group row">
+							<label class="col-md-3 col-form-control" form="luname">User ID : </label>
+							<div class="col-md-9">
+								<input type="text" class="form-control" id="luname" placeholder="Enter User ID : ">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-md-3 col-form-control" form="lpass">Password : </label>
+							<div class="col-md-9">
+								<input type="password" class="form-control" id="lpass" placeholder="Enter Password : ">
+							</div>
+						</div>
+						<div class="row">
+							<div class="btn-group col-md-offset-3 col-md-6">
+								<button type="button" onclick="login()" class="btn btn-primary">Login</button>
+								<button type="reset" class="btn btn-default">Reset</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+    </div>	
+<!-- Start -->
+    <div class="modal fade" id="start" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <ul class="list-group">
+                <a href="#" onclick="openprob(0)" class="list-group-item">JavaScript Quiz</a>
+                <a href="#" onclick="openprob(1)" class="list-group-item">CSS Quiz</a>
+                <a href="#" onclick="openprob(2)" class="list-group-item">HTML Quiz</a>
+                <a href="#" onclick="openprob(3)" class="list-group-item">C Programming Quiz</a>
+                <a href="#" onclick="openprob(4)" class="list-group-item">DBMS Quiz</a>
+            </ul>
+        </div>
+    </div>
+<!--  /Modal -->
+<!-- Slide Show --><br><br>
+    <div class="container">
+        <div class="carousel slide" data-ride="carousel" id="slide">
+            <div class="carousel-inner">
+                <div class="item active"><img src="images/slide1.png" alt="Quiz1"></div>
+                <div class="item"><img src="images/slide2.png" alt="Quiz2"></div>
+                <div class="item"><img src="images/slide3.png" alt="Quiz3"></div>
+                <div class="item"><img src="images/slide4.png" alt="Quiz4"></div>
+            </div>
+            <ol class="carousel-indicators">
+                <li data-target="#slide" data-slide-to="0" class="active"></li>
+                <li data-target="#slide" data-slide-to="1"></li>
+                <li data-target="#slide" data-slide-to="2"></li>
+                <li data-target="#slide" data-slide-to="3"></li>
+            </ol>
+        </div>
+    </div>
+<!-- /Slide Show -->
+<!-- Jumbotron --><br><br>
+    <div class="container">
+        <div class="jumbotron row">
+            <div class="col-sm-offset-1 col-sm-8">
+                <p style="text-indent:50px;">Quiz are The one of the best way to test yor knowledge.
+                    <br>&nbsp;&nbsp;&nbsp;It does not providesa way to test,How  much command you
+                    have on that TOPIC or Your availability to do stuff with that knowledge but it tests 
+                    how much you Know about that TOPIC.</p>
+            </div>
+            <div class="col-sm-offset-1 col-sm-2"><br><br><br>
+                <center><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#start">
+                    START</button></center>
+            </div>
+        </div>
+    </div>
+<!-- /Jumbotron -->
+<!-- Footer --><br><br>
+    <div class="container bg-success"> 
+        <div class="row ">
+            <div class="col-sm-4" style="color:aliceblue;">
+                <div class="col-sm-3 footer-social-icons"><a href="#">Contact</a></div>
+                <div class="col-sm-3 footer-social-icons"><a href="#">Our Tean</a></div>
+                <div class="col-sm-3 footer-social-icons"><a href="#">About Us</a></div>
+                <div class="col-sm-3 footer-social-icons"><a href="#">Blog</a></div>
+            </div>
+            <div class="col-sm-3">
+                    <span>Follow Us:</span>
+                    <a href="https://facebook.com"><img src="images/fb.png"></img></a>
+                    <a href="https://google.com"><img src="images/gp.png"></img></a>
+                    <a href="https://youtube.com"><img src="images/yt.png"></img></a>
+                    <a href="https://twitter.com"><img src="images/t.png"></img></a>
+            </div>
+            <div class="col-sm-5">
+                <p>&copy; 2019 <a href="index.html">BasicQuiz</a>. All Rights Reserved.<br><span id="time"></span></p>
+            </div>
+        </div>
+    </div>
+<!-- Footer -->
+<script src="index.js"></script>
+</body>
+</html>
